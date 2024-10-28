@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <h3 class="mt-5">Lista de Materias</h3>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>ID Materia</th>
+          <th>Nombre de Materia</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materia of materias">
+          <td>{{ materia.materia_id }}</td>
+          <td>{{ materia.nombre_materia }}</td>
+          <td>{{ materia.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

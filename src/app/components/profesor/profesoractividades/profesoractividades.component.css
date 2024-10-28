@@ -1,0 +1,28 @@
+.crear-actividad-btn {
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .crear-actividad-btn:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tabla-actividades {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .acciones-cell {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .acciones-cell button {
+    transition: transform 0.2s ease;
+  }
+  
+  .acciones-cell button:hover {
+    transform: scale(1.05);
+  }
+  

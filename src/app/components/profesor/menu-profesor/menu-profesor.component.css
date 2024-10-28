@@ -1,0 +1,27 @@
+.navbar-nav .nav-link {
+    color: white; /* Color del texto */
+  }
+  
+  .navbar-nav .nav-link.active {
+    background-color: #007bff; /* Fondo azul para la opción activa */
+    color: white; /* Texto en blanco */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background-color: #0056b3; /* Fondo más oscuro al pasar el ratón */
+    color: white; /* Mantener el texto blanco */
+  }
+  .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+  }
+  
+  .card-body i {
+    color: #007bff;
+  }
+  

@@ -1,0 +1,11 @@
+
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Eliminar Actividad</h2>
+    <p class="text-center">Estás a punto de eliminar la actividad: <strong>{{ actividad.nombre }}</strong></p>
+    <p class="text-center">Esta acción no se puede deshacer. ¿Estás seguro?</p>
+  
+    <div class="d-flex justify-content-between mt-4">
+      <button mat-flat-button color="warn" class="cancel-button" (click)="closeDialog()">Cancelar</button>
+      <button mat-flat-button color="primary delete-button" (click)="onDelete()">Eliminar</button>
+    </div>
+  </div>

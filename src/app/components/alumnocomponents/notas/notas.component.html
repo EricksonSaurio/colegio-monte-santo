@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h3 class="mt-5">Lista de Notas</h3>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>ID Nota</th>
+          <th>ID Materia</th>
+          <th>ID Alumno</th>
+          <th>ID Actividad</th>
+          <th>Valor de Nota</th>
+          <th>ID Periodo</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nota of notas">
+          <td>{{ nota.nota_id }}</td>
+          <td>{{ nota.materia_id }}</td>
+          <td>{{ nota.alumno_id }}</td>
+          <td>{{ nota.actividad_id }}</td>
+          <td>{{ nota.valor_nota }}</td>
+          <td>{{ nota.periodo_id }}</td>
+          <td>{{ nota.fecha }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

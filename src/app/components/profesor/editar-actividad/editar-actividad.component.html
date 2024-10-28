@@ -1,0 +1,23 @@
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Crear Nueva Actividad</h2>
+    <form (ngSubmit)="onSubmit()" #actividadForm="ngForm">
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Nombre de la Actividad</mat-label>
+        <input matInput [(ngModel)]="actividad.nombre" name="nombre" required placeholder="Ej. Lectura Capítulo 3">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="actividad.estado" name="estado" required>
+          <mat-option value="Asignado">Asignado</mat-option>
+          <mat-option value="En progreso">En progreso</mat-option>
+          <mat-option value="Completado">Completado</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="d-flex justify-content-between mt-4">
+        <button mat-flat-button color="warn" class="cancel-button" (click)="closeDialog()">Cancelar</button>
+        <button mat-flat-button color="primary" class="save-button" type="submit">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>

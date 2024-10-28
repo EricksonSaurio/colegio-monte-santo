@@ -1,0 +1,31 @@
+.container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1976d2; /* Azul intenso */
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  th, td {
+    vertical-align: middle;
+  }
+  
+  .thead-light {
+    background-color: #f8f9fa;
+  }
+  
+  .tabla-materias {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  

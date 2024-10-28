@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,  // El componente es standalone
+  imports: [RouterModule],  // Importamos RouterModule para manejar el enrutamiento
+  template: '<router-outlet></router-outlet>',  // Usamos el router-outlet para cargar las rutas
 })
-export class AppComponent {
-  title = 'colegio-monte-santo';
-}
+export class AppComponent {}

@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <h3 class="mt-5">Lista de Calificaciones</h3>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>ID Calificación</th>
+          <th>ID Alumno</th>
+          <th>ID Materia</th>
+          <th>ID Periodo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let calificacion of calificaciones">
+          <td>{{ calificacion.calificacion_id }}</td>
+          <td>{{ calificacion.alumno_id }}</td>
+          <td>{{ calificacion.materia_id }}</td>
+          <td>{{ calificacion.periodo_id }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

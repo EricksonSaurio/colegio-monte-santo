@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <h3 class="mt-5">Lista de Actividades</h3>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>ID Actividad</th>
+          <th>Nombre de Actividad</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actividad of actividades">
+          <td>{{ actividad.actividad_id }}</td>
+          <td>{{ actividad.nombre_actividad }}</td>
+          <td>{{ actividad.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
