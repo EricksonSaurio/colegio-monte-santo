@@ -9,6 +9,7 @@ import { MenuProfesorComponent } from './components/profesor/menu-profesor/menu-
 import { ProfesorActividadesComponent } from './components/profesor/profesoractividades/profesoractividades.component';
 import { GestionarMateriasComponent } from './components/profesor/gestionar-materias/gestionar-materias.component';
 import { ProfesorComponent } from './components/profesor/profesor/profesor.component';
+import { ListarEvaluacionesComponent } from './components/profesor/evaluaciones/listar-evaluaciones/listar-evaluaciones.component';
 
 
 
@@ -26,7 +27,8 @@ export const routes: Routes = [
     path: 'profesor', component: ProfesorComponent, children: [
       {path: 'inicio', component: MenuProfesorComponent},
       { path: 'actividades', component: ProfesorActividadesComponent },
-      { path: 'materias', component: GestionarMateriasComponent }
+      { path: 'materias', component: GestionarMateriasComponent },
+      {path: 'evaluaciones', component: ListarEvaluacionesComponent}
     ]
   },
   { path: '', redirectTo: 'alumno/inicio', pathMatch: 'full' }

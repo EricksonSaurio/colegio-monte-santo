@@ -1,0 +1,29 @@
+<div class="crear-evaluacion">
+    <h2>Crear Nueva Evaluación</h2>
+    <form [formGroup]="evaluacionForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de la Evaluación</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Examen Unidad 1" />
+        <mat-error *ngIf="evaluacionForm.get('nombre')?.hasError('required')">El nombre es requerido</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Seleccione una fecha" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="evaluacionForm.get('fecha')?.hasError('required')">La fecha es requerida</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="descripcion" placeholder="Descripción de la evaluación"></textarea>
+      </mat-form-field>
+  
+      <div class="button-group">
+        <button mat-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!evaluacionForm.valid">Crear</button>
+      </div>
+    </form>
+  </div>
+  

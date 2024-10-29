@@ -1,0 +1,26 @@
+.calificar-evaluacion {
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #3f51b5;
+    font-weight: bold;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+  }
+  
+  input {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  

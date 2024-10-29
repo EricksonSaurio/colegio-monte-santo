@@ -1,0 +1,48 @@
+<div class="evaluaciones-container">
+    <!-- Encabezado con título y botón de crear evaluación -->
+    <div class="evaluaciones-header">
+      <h2>Gestión de Evaluaciones</h2>
+      <button class="btn btn-crear-evaluacion" (click)="openCrearEvaluacion()">
+        <i class="bi bi-plus-lg"></i> Crear Evaluación
+      </button>
+    </div>
+  
+    <!-- Tabla responsive para las evaluaciones -->
+    <div class="table-responsive">
+      <table class="table-evaluaciones">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Asignatura</th>
+            <th>Fecha de Realización</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Ejemplo de filas de evaluación; usa *ngFor para renderizar dinámicamente -->
+          <tr *ngFor="let evaluacion of evaluaciones">
+            <td>{{ evaluacion.nombre }}</td>
+            <td>{{ evaluacion.asignatura }}</td>
+            <td>{{ evaluacion.fechaRealizacion | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ evaluacion.estado }}</td>
+            <td>
+              <button class="btn btn-outline-info ver-btn" [routerLink]="['/profesor/evaluaciones/ver', evaluacion.id]">
+                <i class="bi bi-eye"></i> Ver
+              </button>
+              <button class="btn btn-outline-primary editar-btn" [routerLink]="['/profesor/evaluaciones/editar', evaluacion.id]">
+                <i class="bi bi-pencil"></i> Editar
+              </button>
+              <button class="btn btn-outline-success calificar-btn" [routerLink]="['/profesor/evaluaciones/calificar', evaluacion.id]">
+                <i class="bi bi-check2-square"></i> Calificar
+              </button>
+              <button class="btn btn-outline-warning duplicar-btn" [routerLink]="['/profesor/evaluaciones/duplicar', evaluacion.id]">
+                <i class="bi bi-files"></i> Duplicar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

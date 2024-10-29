@@ -1,0 +1,135 @@
+.evaluaciones-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .evaluaciones-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .evaluaciones-header h2 {
+    color: #007bff;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .btn-crear-evaluacion {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px; /* Tamaño más grande */
+    font-size: 20px; /* Fuente más grande */
+    font-weight: bold;
+    border-radius: 8px; /* Borde más redondeado */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centrar contenido */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle efecto de elevación */
+    cursor: pointer;
+  }
+  
+  .btn-crear-evaluacion i {
+    margin-right: 8px;
+    font-size: 22px; /* Tamaño del icono acorde al botón */
+  }
+  
+  .btn-crear-evaluacion:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Contenedor de la tabla; el scroll solo en pantallas pequeñas */
+  .table-responsive {
+    width: 100%;
+    overflow-x: visible; /* Sin scroll horizontal en pantallas grandes */
+  }
+  
+  /* Tabla sin ancho mínimo en pantallas grandes */
+  .table-evaluaciones {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .table-evaluaciones th, .table-evaluaciones td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .table-evaluaciones th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .table-evaluaciones tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-evaluaciones tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Estilos para los botones de acción */
+  .btn {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .ver-btn {
+    color: #17a2b8;
+    border: 1px solid #17a2b8;
+  }
+  
+  .editar-btn {
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+  
+  .calificar-btn {
+    color: #28a745;
+    border: 1px solid #28a745;
+  }
+  
+  .duplicar-btn {
+    color: #ffc107;
+    border: 1px solid #ffc107;
+  }
+  
+  .btn i {
+    margin-right: 5px;
+  }
+  
+  /* Responsividad solo en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .evaluaciones-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .btn-crear-evaluacion {
+      margin-top: 10px;
+      width: 100%; /* Que ocupe el ancho completo en dispositivos móviles */
+      text-align: center;
+    }
+  
+    /* Tabla responsive solo en pantallas pequeñas */
+    .table-responsive {
+      overflow-x: auto;
+    }
+  
+    /* Ancho mínimo de tabla solo en pantallas pequeñas */
+    .table-evaluaciones {
+      min-width: 600px;
+    }
+  }
+  
