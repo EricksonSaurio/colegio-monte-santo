@@ -10,13 +10,18 @@ import { ProfesorActividadesComponent } from './components/profesor/profesoracti
 import { GestionarMateriasComponent } from './components/profesor/gestionar-materias/gestionar-materias.component';
 import { ProfesorComponent } from './components/profesor/profesor/profesor.component';
 import { ListarEvaluacionesComponent } from './components/profesor/evaluaciones/listar-evaluaciones/listar-evaluaciones.component';
-
-
+import { LoginComponent } from './components/login/login.component'; 
+import { RoleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   {
-    path: 'alumno', component: AlumnoComponent, children: [
-      { path: 'inicio', component: CardsComponent },  
+    path: 'alumno',
+    component: AlumnoComponent,
+    canActivate: [RoleGuard],
+    data: { role: 'Estudiante' },
+    children: [
+      { path: 'inicio', component: CardsComponent },
       { path: 'actividades', component: ActividadesComponent },
       { path: 'materias', component: MateriasComponent },
       { path: 'notas', component: NotasComponent },
@@ -24,12 +29,16 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'profesor', component: ProfesorComponent, children: [
-      {path: 'inicio', component: MenuProfesorComponent},
+    path: 'profesor',
+    component: ProfesorComponent,
+    canActivate: [RoleGuard],
+    data: { role: 'Profesor' },
+    children: [
+      { path: 'inicio', component: MenuProfesorComponent },
       { path: 'actividades', component: ProfesorActividadesComponent },
       { path: 'materias', component: GestionarMateriasComponent },
-      {path: 'evaluaciones', component: ListarEvaluacionesComponent}
+      { path: 'evaluaciones', component: ListarEvaluacionesComponent }
     ]
   },
-  { path: '', redirectTo: 'alumno/inicio', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

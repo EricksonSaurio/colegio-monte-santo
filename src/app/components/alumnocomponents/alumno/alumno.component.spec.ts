@@ -1,23 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { AlumnoComponent } from './alumno.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AlumnoComponent', () => {
-  let component: AlumnoComponent;
-  let fixture: ComponentFixture<AlumnoComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlumnoComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(AlumnoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [AlumnoComponent], // Importa el componente standalone directamente
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({}), // Mock del parámetro si lo necesitas
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(AlumnoComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });
