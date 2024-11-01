@@ -1,0 +1,19 @@
+.container {
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3f51b5; /* Color azul primario */
+  }
+  
+  .table {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .btn {
+    font-weight: bold;
+  }
+  

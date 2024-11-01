@@ -24,5 +24,5 @@ export class ProfesorService {
   eliminarProfesor(profesorId: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/eliminar/${profesorId}`);
   }
-  // Puedes agregar otros métodos para registrar, editar, eliminar, etc.
+  
 }

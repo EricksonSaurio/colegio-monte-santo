@@ -16,6 +16,10 @@ import { AdminComponent } from './components/administrador/admin/admin.component
 import { InicioComponent } from './components/administrador/inicio/inicio.component';
 import { ListarUsuariosComponent } from './components/administrador/listar-usuarios/listar-usuarios.component';
 import { ListarProfesorComponent } from './components/administrador/profesor/listar-profesor/listar-profesor.component';
+import { ListarAlumnosComponent } from './components/administrador/alumno/listar-alumnos/listar-alumnos.component';
+import { ListarMateriasComponent } from './components/administrador/materia/listar-materias/listar-materias.component';
+import { ListarAulasComponent } from './components/administrador/aulas/listar-aulas/listar-aulas.component';
+import { ListarGradosComponent } from './components/administrador/grado/listar-grados/listar-grados.component';
 
 
 export const routes: Routes = [
@@ -53,7 +57,11 @@ export const routes: Routes = [
     children: [
       { path: 'inicio', component: InicioComponent },
       {path: 'usuarios', component: ListarUsuariosComponent},
-      {path: 'profesores', component: ListarProfesorComponent}
+      {path: 'profesores', component: ListarProfesorComponent},
+      {path: 'alumnos', component: ListarAlumnosComponent},
+      {path: 'materias', component: ListarMateriasComponent},
+      {path: 'aulas', component: ListarAulasComponent},
+      {path: 'grados', component: ListarGradosComponent}
      
     ]
   },

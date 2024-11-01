@@ -1,0 +1,37 @@
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Editar Materia</h2>
+    <form (ngSubmit)="onSubmit()" #materiaForm="ngForm">
+      
+      <!-- Campo Nombre de la Materia -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Nombre de la Materia</mat-label>
+        <input matInput [(ngModel)]="materia.nombre_materia" name="nombre_materia" required placeholder="Ej. Matemáticas">
+      </mat-form-field>
+  
+      <!-- Selección de Estado -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="materia.estado" name="estado" required>
+          <mat-option value="1">Activo</mat-option>
+          <mat-option value="0">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Selección del Profesor -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Profesor</mat-label>
+        <mat-select [(ngModel)]="materia.profesorid" name="profesorid" required>
+          <mat-option *ngFor="let profesor of profesores" [value]="profesor.profesor_id">
+            {{ profesor.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones de acción -->
+      <div class="d-flex justify-content-between mt-4">
+        <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
+  

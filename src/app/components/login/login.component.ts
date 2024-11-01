@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,6 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   loginForm: FormGroup;
   hidePassword = true;
-  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -48,26 +48,45 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
 
-      // Corrige el tipo de datos que se pasa a login()
       this.authService.login(username, password).subscribe(
         (response: { token: string }) => {
           this.authService.saveToken(response.token);
           const role = this.authService.getUserRole();
 
-          // Redirige según el rol
-          if (role === 'Estudiante') {
-            this.router.navigate(['/alumno/inicio']);
-          } else if (role === 'Profesor') {
-            this.router.navigate(['/profesor/inicio']);
-          } else if (role === 'Administrador') {
-            this.router.navigate(['/admin/inicio']);
-          }
+          Swal.fire({
+            icon: 'success',
+            title: 'Inicio de sesión exitoso',
+            text: `Bienvenido, ${role}`,
+            timer: 1500,
+            showConfirmButton: false
+          }).then(() => {
+            // Redirige según el rol
+            if (role === 'Estudiante') {
+              this.router.navigate(['/alumno/inicio']);
+            } else if (role === 'Profesor') {
+              this.router.navigate(['/profesor/inicio']);
+            } else if (role === 'Administrador') {
+              this.router.navigate(['/admin/inicio']);
+            }
+          });
         },
         (error) => {
-          this.errorMessage = 'Error al iniciar sesión. Verifica tus credenciales.';
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al iniciar sesión. Verifica tus credenciales.',
+            confirmButtonText: 'Intentar de nuevo'
+          });
           console.error('Error de autenticación:', error);
         }
       );
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Formulario incompleto',
+        text: 'Por favor, complete todos los campos.',
+        confirmButtonText: 'Aceptar'
+      });
     }
   }
 }

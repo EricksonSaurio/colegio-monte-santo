@@ -1,0 +1,27 @@
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Crear Nuevo Grado</h2>
+    <form (ngSubmit)="onSubmit()" #gradoForm="ngForm">
+  
+      <!-- Campo Nombre del Grado -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Nombre del Grado</mat-label>
+        <input matInput [(ngModel)]="grado.nombre_grado" name="nombre_grado" required placeholder="Ej. Primero de Primaria">
+      </mat-form-field>
+  
+      <!-- Selección de Estado -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="grado.estado" name="estado" required>
+          <mat-option value="1">Activo</mat-option>
+          <mat-option value="0">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones de acción -->
+      <div class="d-flex justify-content-between mt-4">
+        <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit">Crear</button>
+      </div>
+    </form>
+  </div>
+  

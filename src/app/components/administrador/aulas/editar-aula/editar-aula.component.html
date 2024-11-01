@@ -1,0 +1,27 @@
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Editar Aula</h2>
+    <form (ngSubmit)="onSubmit()" #aulaForm="ngForm">
+  
+      <!-- Campo Nombre del Aula -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Nombre del Aula</mat-label>
+        <input matInput [(ngModel)]="aula.nombre_aula" name="nombre_aula" required placeholder="Ej. Aula 101">
+      </mat-form-field>
+  
+      <!-- Selección de Estado -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="aula.estado" name="estado" required>
+          <mat-option value="1">Activo</mat-option>
+          <mat-option value="0">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones de acción -->
+      <div class="d-flex justify-content-between mt-4">
+        <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+  

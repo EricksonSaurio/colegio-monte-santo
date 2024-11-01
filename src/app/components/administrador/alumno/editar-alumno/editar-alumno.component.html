@@ -1,0 +1,79 @@
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Editar Alumno</h2>
+    <form (ngSubmit)="onSubmit()" #alumnoForm="ngForm">
+  
+      <!-- Campo Nombre -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="alumno.nombre_alumno" name="nombre_alumno" required placeholder="Ej. María López">
+      </mat-form-field>
+  
+      <!-- Campo Carnet -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Carnet</mat-label>
+        <input matInput [(ngModel)]="alumno.carnet" name="carnet" required placeholder="A001">
+      </mat-form-field>
+  
+      <!-- Campo Edad -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Edad</mat-label>
+        <input matInput [(ngModel)]="alumno.edad" name="edad" required type="number" placeholder="15">
+      </mat-form-field>
+  
+      <!-- Campo Dirección -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Dirección</mat-label>
+        <input matInput [(ngModel)]="alumno.direccion" name="direccion" required placeholder="Calle 123, Ciudad">
+      </mat-form-field>
+  
+      <!-- Campo Cédula -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Cédula</mat-label>
+        <input matInput [(ngModel)]="alumno.cedula" name="cedula" required placeholder="1234567890">
+      </mat-form-field>
+  
+      <!-- Campo Teléfono -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Teléfono</mat-label>
+        <input matInput [(ngModel)]="alumno.telefono" name="telefono" required type="tel" placeholder="9876543210">
+      </mat-form-field>
+  
+      <!-- Campo Correo -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Correo</mat-label>
+        <input matInput [(ngModel)]="alumno.correo" name="correo" required type="email" placeholder="maria.lopez@example.com">
+      </mat-form-field>
+  
+      <!-- Campo Fecha de Nacimiento con Datepicker -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput [(ngModel)]="alumno.fecha_nac" name="fecha_nac" [matDatepicker]="nacimientoPicker" required>
+        <mat-datepicker-toggle matSuffix [for]="nacimientoPicker"></mat-datepicker-toggle>
+        <mat-datepicker #nacimientoPicker></mat-datepicker>
+      </mat-form-field>
+  
+      <!-- Campo Fecha de Registro con Datepicker -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Fecha de Registro</mat-label>
+        <input matInput [(ngModel)]="alumno.fecha_registro" name="fecha_registro" [matDatepicker]="registroPicker" required>
+        <mat-datepicker-toggle matSuffix [for]="registroPicker"></mat-datepicker-toggle>
+        <mat-datepicker #registroPicker></mat-datepicker>
+      </mat-form-field>
+  
+      <!-- Selección de Estado -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="alumno.estado" name="estado" required>
+          <mat-option value="1">Activo</mat-option>
+          <mat-option value="0">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones de acción -->
+      <div class="d-flex justify-content-between mt-4">
+        <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+  
