@@ -1,0 +1,51 @@
+<div class="dialog-container">
+    <h2 class="text-center mb-4">Editar Profesor</h2>
+    <form (ngSubmit)="onSubmit()" #profesorForm="ngForm">
+  
+      <!-- Campo Nombre -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="profesor.nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+      </mat-form-field>
+  
+      <!-- Campo Dirección -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Dirección</mat-label>
+        <input matInput [(ngModel)]="profesor.direccion" name="direccion" required placeholder="Calle Principal, Ciudad">
+      </mat-form-field>
+  
+      <!-- Campo Cédula -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Cédula</mat-label>
+        <input matInput [(ngModel)]="profesor.cedula" name="cedula" required placeholder="2345678901">
+      </mat-form-field>
+  
+      <!-- Campo Teléfono -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Teléfono</mat-label>
+        <input matInput [(ngModel)]="profesor.telefono" name="telefono" required placeholder="8765432109">
+      </mat-form-field>
+  
+      <!-- Campo Correo -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Correo</mat-label>
+        <input matInput [(ngModel)]="profesor.correo" name="correo" required type="email" placeholder="juan.perez@example.com">
+      </mat-form-field>
+  
+      <!-- Selección de Estado -->
+      <mat-form-field appearance="fill" class="w-100 mb-4">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="profesor.estado" name="estado" required>
+          <mat-option value="1">Activo</mat-option>
+          <mat-option value="0">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones de acción -->
+      <div class="d-flex justify-content-between mt-4">
+        <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+  

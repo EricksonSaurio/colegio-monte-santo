@@ -1,0 +1,37 @@
+/* Estilos para el navbar (opcional si aplicable) */
+.navbar-nav .nav-link {
+  color: white; /* Color del texto */
+}
+
+.navbar-nav .nav-link.active {
+  background-color: #007bff; /* Fondo azul para la opción activa */
+  color: white; /* Texto en blanco */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #0056b3; /* Fondo más oscuro al pasar el ratón */
+  color: white; /* Mantener el texto blanco */
+}
+
+/* Estilos para las cards */
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  padding: 20px; /* Espaciado interno */
+  margin-bottom: 20px; /* Espaciado entre tarjetas */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-body i {
+  color: #007bff; /* Color de los iconos */
+  margin-bottom: 10px; /* Espacio debajo del icono */
+}
+
+/* Ajustes de espaciado para las columnas */
+.col-md-6.col-lg-3 {
+  padding: 10px; /* Espaciado entre columnas */
+}

@@ -1,1 +1,50 @@
-<p>navbar-admin works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <!-- Botón para el menú colapsable en pantallas pequeñas -->
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Logo y nombre del sistema -->
+      <a class="navbar-brand text-white" href="#">
+        <img src="assets/logo.png" alt="logo" style="width: 40px;">
+        Colegio Monte Santo - Admin
+      </a>
+  
+      <!-- Opciones del navbar -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/admin/inicio" routerLinkActive="active">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/admin/usuarios" routerLinkActive="active">Gestión de Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/admin/materias" routerLinkActive="active">Gestión de Materias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/admin/evaluaciones" routerLinkActive="active">Evaluaciones y Actividades</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/admin/reportes" routerLinkActive="active">Panel de Reportes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/admin/configuracion" routerLinkActive="active">Configuración del Sistema</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/logout" routerLinkActive="active">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

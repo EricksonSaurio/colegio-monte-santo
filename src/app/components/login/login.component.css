@@ -1,11 +1,18 @@
 .login-card {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .full-width {
-    width: 100%;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.logo {
+  width: 100px; /* Ajusta el tamaño según necesites */
+  margin-bottom: 20px;
+}

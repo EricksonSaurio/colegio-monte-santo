@@ -1,0 +1,55 @@
+<div class="dialog-container">
+  <h2 class="text-center mb-4">Crear Nuevo Usuario</h2>
+  <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+
+    <!-- Campo Usuario -->
+    <mat-form-field appearance="fill" class="w-100 mb-4">
+      <mat-label>Usuario</mat-label>
+      <input matInput [(ngModel)]="usuario.usuario" name="usuario" required placeholder="Ej. jperez123">
+    </mat-form-field>
+
+    <!-- Campo Clave -->
+    <mat-form-field appearance="fill" class="w-100 mb-4">
+      <mat-label>Clave</mat-label>
+      <input matInput [(ngModel)]="usuario.clave" name="clave" type="password" required placeholder="Contraseña">
+    </mat-form-field>
+
+    <!-- Selección de Rol -->
+    <mat-form-field appearance="fill" class="w-100 mb-4">
+      <mat-label>Rol</mat-label>
+      <mat-select [(ngModel)]="usuario.rol_id" name="rol_id" required (selectionChange)="onRolChange()">
+        <mat-option *ngFor="let rol of roles" [value]="rol.rol_id">{{ rol.nombre_rol }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Selección de Profesor o Estudiante -->
+    <mat-form-field appearance="fill" class="w-100 mb-4" *ngIf="usuario.rol_id === 2">
+      <mat-label>Profesor</mat-label>
+      <mat-select [(ngModel)]="usuario.profesor_id" name="profesor_id" required>
+        <mat-option *ngFor="let profesor of profesores" [value]="profesor.profesor_id">{{ profesor.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100 mb-4" *ngIf="usuario.rol_id === 3">
+      <mat-label>Alumno</mat-label>
+      <mat-select [(ngModel)]="usuario.alumno_id" name="alumno_id" required>
+        <mat-option *ngFor="let alumno of alumnos" [value]="alumno.alumno_id">{{ alumno.nombre_alumno }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Selección de Estado -->
+    <mat-form-field appearance="fill" class="w-100 mb-4">
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="usuario.estado" name="estado" required>
+        <mat-option value="1">Activo</mat-option>
+        <mat-option value="0">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Botones de acción -->
+    <div class="d-flex justify-content-between mt-4">
+      <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
+      <button mat-flat-button color="primary" type="submit">Crear</button>
+    </div>
+  </form>
+</div>

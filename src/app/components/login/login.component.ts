@@ -60,7 +60,7 @@ export class LoginComponent {
           } else if (role === 'Profesor') {
             this.router.navigate(['/profesor/inicio']);
           } else if (role === 'Administrador') {
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/admin/inicio']);
           }
         },
         (error) => {

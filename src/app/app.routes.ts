@@ -12,6 +12,11 @@ import { ProfesorComponent } from './components/profesor/profesor/profesor.compo
 import { ListarEvaluacionesComponent } from './components/profesor/evaluaciones/listar-evaluaciones/listar-evaluaciones.component';
 import { LoginComponent } from './components/login/login.component'; 
 import { RoleGuard } from './guards/role.guard';
+import { AdminComponent } from './components/administrador/admin/admin.component';
+import { InicioComponent } from './components/administrador/inicio/inicio.component';
+import { ListarUsuariosComponent } from './components/administrador/listar-usuarios/listar-usuarios.component';
+import { ListarProfesorComponent } from './components/administrador/profesor/listar-profesor/listar-profesor.component';
+
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +43,18 @@ export const routes: Routes = [
       { path: 'actividades', component: ProfesorActividadesComponent },
       { path: 'materias', component: GestionarMateriasComponent },
       { path: 'evaluaciones', component: ListarEvaluacionesComponent }
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [RoleGuard],
+    data: { role: 'Administrador' },
+    children: [
+      { path: 'inicio', component: InicioComponent },
+      {path: 'usuarios', component: ListarUsuariosComponent},
+      {path: 'profesores', component: ListarProfesorComponent}
+     
     ]
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
