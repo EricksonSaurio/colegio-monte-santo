@@ -1,23 +1,38 @@
 <div class="dialog-container">
   <h2 class="text-center mb-4">Crear Nueva Actividad</h2>
   <form (ngSubmit)="onSubmit()" #actividadForm="ngForm">
+    
+    <!-- Campo para el nombre de la actividad -->
     <mat-form-field appearance="fill" class="w-100 mb-4">
       <mat-label>Nombre de la Actividad</mat-label>
-      <input matInput [(ngModel)]="actividad.nombre" name="nombre" required placeholder="Ej. Lectura Capítulo 3">
+      <input 
+        matInput 
+        [(ngModel)]="actividad.nombre" 
+        name="nombre" 
+        required 
+        placeholder="Ej. Lectura Capítulo 3"
+        #nombre="ngModel">
+      <mat-error *ngIf="nombre.invalid && nombre.touched">El nombre es obligatorio</mat-error>
     </mat-form-field>
 
+    <!-- Campo para el estado de la actividad -->
     <mat-form-field appearance="fill" class="w-100 mb-4">
       <mat-label>Estado</mat-label>
-      <mat-select [(ngModel)]="actividad.estado" name="estado" required>
-        <mat-option value="Asignado">Asignado</mat-option>
-        <mat-option value="En progreso">En progreso</mat-option>
-        <mat-option value="Completado">Completado</mat-option>
+      <mat-select 
+        [(ngModel)]="actividad.estado" 
+        name="estado" 
+        required 
+        #estado="ngModel">
+        <mat-option value="1">Activo</mat-option>
+        <mat-option value="0">Inactivo</mat-option>
       </mat-select>
+      <mat-error *ngIf="estado.invalid && estado.touched">El estado es obligatorio</mat-error>
     </mat-form-field>
 
+    <!-- Botones de acción -->
     <div class="d-flex justify-content-between mt-4">
       <button mat-flat-button color="warn" (click)="closeDialog()">Cancelar</button>
-      <button mat-flat-button color="primary" type="submit">Crear</button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="actividadForm.invalid">Crear</button>
     </div>
   </form>
 </div>

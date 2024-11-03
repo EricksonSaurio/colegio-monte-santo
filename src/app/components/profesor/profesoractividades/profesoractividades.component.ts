@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarProfesorComponent } from '../navbar-profesor/navbar-profesor.component';
 import { CrearActividadComponent } from '../crear-actividad/crear-actividad.component';
 import { EditarActividadComponent } from '../editar-actividad/editar-actividad.component';
-import { EliminarActividadComponent } from '../eliminar-actividad/eliminar-actividad.component';
-import { ActividadService } from '../../../services/actividad.service'; // Importa el servicio de actividad
+import { ActividadService } from '../../../services/actividad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profesor-actividades',
@@ -53,41 +53,65 @@ export class ProfesorActividadesComponent implements OnInit {
       width: '400px',
       disableClose: true
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      if (result && result.nombre && result.estado) {
-        this.actividades.push(result);
+      if (result) {
+        this.actividades.push({
+          nombre: result.nombre_actividad,
+          estado: result.estado === 1 ? 'Activo' : 'Inactivo'
+        });
       }
     });
   }
-
+  
   editActivity(actividad: any): void {
     const dialogRef = this.dialog.open(EditarActividadComponent, {
       width: '400px',
       disableClose: true,
-      data: actividad
+      data: actividad // Asegúrate de pasar el objeto actividad completo
     });
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const index = this.actividades.findIndex((a) => a.nombre === actividad.nombre);
+        // Actualiza la actividad en la lista
+        const index = this.actividades.findIndex(a => a.actividad_id === result.actividad_id);
         if (index !== -1) {
           this.actividades[index] = result;
         }
       }
     });
   }
-
   deleteActivity(actividad: any): void {
-    const dialogRef = this.dialog.open(EliminarActividadComponent, {
-      width: '400px',
-      disableClose: true,
-      data: actividad
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.actividades = this.actividades.filter(a => a !== actividad);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará la actividad permanentemente.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Asegúrate de usar el identificador correcto
+        this.actividadService.eliminarActividad(actividad.actividad_id).subscribe(
+          () => {
+            this.actividades = this.actividades.filter(a => a.actividad_id !== actividad.actividad_id);
+            Swal.fire(
+              'Eliminada',
+              'La actividad ha sido eliminada exitosamente.',
+              'success'
+            );
+          },
+          (error) => {
+            Swal.fire(
+              'Error',
+              'Hubo un problema al eliminar la actividad.',
+              'error'
+            );
+            console.error('Error al eliminar la actividad:', error);
+          }
+        );
       }
     });
   }

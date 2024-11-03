@@ -6,6 +6,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ActividadService } from '../../../services/actividad.service'; // Importa el servicio
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-actividad',
@@ -24,15 +26,40 @@ import { CommonModule } from '@angular/common';
 export class CrearActividadComponent {
   actividad = {
     nombre: '',
-    estado: ''
+    estado: '' // Debe ser '1' para Activo o '0' para Inactivo
   };
 
-  constructor(private dialogRef: MatDialogRef<CrearActividadComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<CrearActividadComponent>,
+    private actividadService: ActividadService
+  ) {}
 
   onSubmit(): void {
-    // Aquí agregas la lógica para crear la nueva actividad y cerrar el diálogo
-    console.log('Actividad creada:', this.actividad);
-    this.dialogRef.close(this.actividad);
+    const nuevaActividad = {
+      nombre_actividad: this.actividad.nombre,
+      estado: this.actividad.estado === '1' ? 1 : 0
+    };
+
+    this.actividadService.registrarActividad(nuevaActividad).subscribe(
+      (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Actividad Creada',
+          text: 'La actividad se ha creado exitosamente.',
+          confirmButtonText: 'Aceptar'
+        });
+        this.dialogRef.close(response); // Envía la actividad creada al componente padre
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un problema al crear la actividad.',
+          confirmButtonText: 'Aceptar'
+        });
+        console.error('Error al crear la actividad:', error);
+      }
+    );
   }
 
   closeDialog(): void {

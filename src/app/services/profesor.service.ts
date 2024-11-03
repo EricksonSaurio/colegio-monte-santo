@@ -15,6 +15,10 @@ export class ProfesorService {
     return this.http.get<any>(`${this.apiUrl}/Listar`);
   }
 
+  getProfesorById(profesorId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Obtener/${profesorId}`);
+  }
+
   registrarProfesor(profesor: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/Registrar`, profesor); // Asegúrate de que la ruta sea correcta
   }

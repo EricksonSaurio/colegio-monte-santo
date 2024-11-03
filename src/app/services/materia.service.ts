@@ -39,6 +39,6 @@ export class MateriaService {
   obtenerMateria(id: number): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
-   // Método para obtener una materia específica por su id
+  
 
 }
