@@ -33,13 +33,12 @@ export class EditarAlumnoComponent implements OnInit {
     private alumnoService: AlumnoService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.alumno = { ...data.alumno }; // Copia los datos del alumno seleccionado
+    this.alumno = { ...data.alumno };
   }
 
   ngOnInit(): void {}
 
   onSubmit() {
-    // Convertir las fechas a formato ISO en UTC
     if (this.alumno.fecha_nac) {
       this.alumno.fecha_nac = new Date(this.alumno.fecha_nac).toISOString();
     }
@@ -47,7 +46,6 @@ export class EditarAlumnoComponent implements OnInit {
       this.alumno.fecha_registro = new Date(this.alumno.fecha_registro).toISOString();
     }
   
-    // Llamar al servicio para editar el alumno
     this.alumnoService.editarAlumno(this.alumno).subscribe(
       (response) => {
         Swal.fire({
@@ -56,7 +54,7 @@ export class EditarAlumnoComponent implements OnInit {
           icon: 'success',
           confirmButtonText: 'OK'
         });
-        this.dialogRef.close(true); // Cierra el modal y actualiza la lista de alumnos
+        this.dialogRef.close(true);
       },
       (error) => {
         Swal.fire({

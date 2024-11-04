@@ -6,12 +6,12 @@ import { of } from 'rxjs';
 describe('AlumnoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlumnoComponent], // Importa el componente standalone directamente
+      imports: [AlumnoComponent], 
       providers: [
         {
           provide: ActivatedRoute,
           useValue: {
-            paramMap: of({}), // Mock del parámetro si lo necesitas
+            paramMap: of({}), 
           },
         },
       ],

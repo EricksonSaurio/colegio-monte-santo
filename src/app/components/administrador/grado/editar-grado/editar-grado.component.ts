@@ -32,7 +32,6 @@ export class EditarGradoComponent {
     public dialogRef: MatDialogRef<EditarGradoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    // Inicializamos `grado` con los datos pasados
     this.grado = { ...data.grado };
   }
 
@@ -40,7 +39,7 @@ export class EditarGradoComponent {
     this.gradoService.editarGrado(this.grado).subscribe(
       () => {
         Swal.fire('Guardado', 'El grado ha sido actualizado exitosamente.', 'success');
-        this.dialogRef.close(true); // Cierra el modal y envía `true` indicando éxito
+        this.dialogRef.close(true);
       },
       (error) => {
         console.error('Error al actualizar el grado', error);
@@ -50,6 +49,6 @@ export class EditarGradoComponent {
   }
 
   closeDialog() {
-    this.dialogRef.close(false); // Cierra el modal sin guardar
+    this.dialogRef.close(false);
   }
 }

@@ -15,16 +15,16 @@ export class EliminarUsuarioComponent {
   ) {}
 
   get usuario() {
-    console.log('Usuario a eliminar:', this.data.usuario); // Verifica que el usuario tenga un `usuario_id` y `nombre`
+    console.log('Usuario a eliminar:', this.data.usuario);
     return this.data.usuario;
   }
 
   onDelete(): void {
-    console.log("Ejecutando eliminación..."); // Confirmación de ejecución
+    console.log("Ejecutando eliminación...");
     this.usuarioService.eliminarUsuario(this.usuario.usuario_id).subscribe(
       (response) => {
-        console.log('Usuario eliminado:', response); // Confirmación de eliminación
-        this.dialogRef.close(true); // Enviar `true` para confirmar eliminación
+        console.log('Usuario eliminado:', response);
+        this.dialogRef.close(true);
       },
       (error) => {
         console.error('Error al eliminar usuario:', error);
@@ -33,7 +33,7 @@ export class EliminarUsuarioComponent {
   }
 
   closeDialog(): void {
-    console.log("Cierre sin eliminar"); // Confirmación de cierre
-    this.dialogRef.close(); // Cierra el modal sin realizar ninguna acción
+    console.log("Cierre sin eliminar");
+    this.dialogRef.close();
   }
 }

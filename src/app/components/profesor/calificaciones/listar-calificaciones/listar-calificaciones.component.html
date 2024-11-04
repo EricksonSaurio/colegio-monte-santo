@@ -1,0 +1,24 @@
+<div class="container my-4">
+    <h2>Lista de Calificaciones</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID Calificación</th>
+          <th>ID Alumno</th>
+          <th>ID Materia</th>
+          <th>Nota</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let calificacion of calificaciones">
+          <td>{{ calificacion.calificacion_id }}</td>
+          <td>{{ calificacion.alumno.alumno_id }}</td>
+          <td>{{ calificacion.materia.materia_id }}</td>
+          <td>{{ calificacion.nota }}</td>
+          <td>{{ calificacion.estado ? 'Activo' : 'Inactivo' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

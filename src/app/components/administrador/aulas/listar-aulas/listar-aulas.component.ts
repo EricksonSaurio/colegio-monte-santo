@@ -47,11 +47,11 @@ export class ListarAulasComponent implements OnInit {
   abrirModalEditar(aula: any): void {
     this.dialog.open(EditarAulaComponent, {
       width: '400px',
-      data: aula, // Pasa los datos del aula al componente de edición
+      data: aula, 
       disableClose: true
     }).afterClosed().subscribe(result => {
       if (result === 'success') {
-        this.obtenerAulas(); // Refresca la lista de aulas después de la edición
+        this.obtenerAulas(); 
       }
     });
   }

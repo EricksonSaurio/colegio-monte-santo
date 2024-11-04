@@ -46,7 +46,7 @@ export class RegistrarProfesorComponent {
           text: 'El profesor ha sido registrado exitosamente.',
           confirmButtonColor: '#3f51b5'
         }).then(() => {
-          this.dialogRef.close(true); // Cerramos el modal y actualizamos la lista
+          this.dialogRef.close(true); 
         });
       },
       (error) => {

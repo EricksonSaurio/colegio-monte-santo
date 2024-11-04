@@ -7,7 +7,6 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RegistrarMateriaComponent } from '../registrar-materia/registrar-materia.component';
 import { EditarMateriaComponent } from '../editar-materia/editar-materia.component';
 
-
 @Component({
   selector: 'app-listar-materias',
   templateUrl: './listar-materias.component.html',
@@ -66,30 +65,28 @@ export class ListarMateriasComponent implements OnInit {
   abrirModalRegistrar(): void {
     const dialogRef = this.dialog.open(RegistrarMateriaComponent, {
       width: '500px',
-      data: {} // Si necesitas pasar datos al modal
+      data: {}
     });
   
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Modal cerrado');
-      this.cargarMaterias(); // Recargar la lista de materias si se registró una nueva
+      this.cargarMaterias();
     });
   }
 
   abrirModalEditar(materia: any): void {
     const dialogRef = this.dialog.open(EditarMateriaComponent, {
       width: '500px',
-      data: { materia }  // Pasamos los datos de la materia
+      data: { materia }
     });
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.cargarMaterias(); // Recarga la lista si se editó la materia
+        this.cargarMaterias();
       }
     });
   }
   
-  
-
   confirmarEliminarMateria(materia: any): void {
     Swal.fire({
       title: '¿Estás seguro?',
@@ -111,7 +108,7 @@ export class ListarMateriasComponent implements OnInit {
     this.materiaService.eliminarMateria(id).subscribe(
       () => {
         Swal.fire('Eliminado', 'La materia ha sido eliminada con éxito', 'success');
-        this.cargarMaterias(); // Recargar la lista después de eliminar
+        this.cargarMaterias();
       },
       (error) => {
         Swal.fire('Error', 'Hubo un problema al eliminar la materia', 'error');

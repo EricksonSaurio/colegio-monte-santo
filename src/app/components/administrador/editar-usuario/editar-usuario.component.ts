@@ -48,7 +48,7 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Cargar la lista de roles desde el servicio
+    
     this.usuarioService.obtenerRoles().subscribe(
       (data) => {
         this.roles = data;
@@ -70,7 +70,7 @@ export class EditarUsuarioComponent implements OnInit {
       return;
     }
 
-    // Validar que todos los campos requeridos estén completos antes de enviar
+    
     if (this.usuario.usuario && this.usuario.rol_id != null) {
       this.usuarioService.actualizarUsuario(this.usuario.usuario_id, this.usuario).subscribe(
         () => {
@@ -80,7 +80,7 @@ export class EditarUsuarioComponent implements OnInit {
             text: 'El usuario ha sido actualizado exitosamente.',
             confirmButtonText: 'Aceptar'
           }).then(() => {
-            this.dialogRef.close(true); // Cerrar el modal y actualizar la lista de usuarios
+            this.dialogRef.close(true); 
           });
         },
         (error: any) => {
@@ -104,7 +104,6 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   closeDialog(): void {
-    // Cierra el modal sin realizar ninguna acción
     this.dialogRef.close();
   }
 }

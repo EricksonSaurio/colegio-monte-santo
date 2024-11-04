@@ -5,11 +5,11 @@ import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav'; // Agregamos la importación correcta
+import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
-  standalone: true,  // Hacemos el componente standalone
+  standalone: true,  
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css'],

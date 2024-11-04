@@ -12,7 +12,7 @@ import { EditarAlumnoComponent } from '../editar-alumno/editar-alumno.component'
   templateUrl: './listar-alumnos.component.html',
   styleUrls: ['./listar-alumnos.component.css'],
   standalone: true,
-  imports: [CommonModule, MatDialogModule] // Añadido MatDialogModule para el uso de diálogos
+  imports: [CommonModule, MatDialogModule] 
 })
 export class ListarAlumnosComponent implements OnInit {
   alumnos: any[] = [];
@@ -26,7 +26,7 @@ export class ListarAlumnosComponent implements OnInit {
     this.cargarAlumnos();
   }
 
-  // Método para cargar la lista de alumnos
+  
   cargarAlumnos(): void {
     this.alumnoService.listarAlumnos().subscribe(
       (data) => {
@@ -38,7 +38,7 @@ export class ListarAlumnosComponent implements OnInit {
     );
   }
 
-  // Método para abrir el modal de "Registrar Alumno"
+  
   abrirModalRegistrar(): void {
     const dialogRef = this.dialog.open(RegistrarAlumnoComponent, {
       width: '400px'
@@ -46,26 +46,26 @@ export class ListarAlumnosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.cargarAlumnos(); // Recargar la lista de alumnos después de registrar uno nuevo
+        this.cargarAlumnos(); 
       }
     });
   }
 
-  // Método para abrir el modal de "Editar Alumno"
+ 
   editarAlumno(alumno: any): void {
     const dialogRef = this.dialog.open(EditarAlumnoComponent, {
       width: '400px',
-      data: { alumno } // Pasamos el alumno seleccionado al modal de edición
+      data: { alumno } 
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.cargarAlumnos(); // Recargar la lista de alumnos después de editar
+        this.cargarAlumnos(); 
       }
     });
   }
 
-  // Método para confirmar y eliminar un alumno
+  
   confirmarEliminarAlumno(alumno: any): void {
     Swal.fire({
       title: '¿Estás seguro?',
@@ -81,7 +81,7 @@ export class ListarAlumnosComponent implements OnInit {
         this.alumnoService.eliminarAlumno(alumno.alumno_id).subscribe(
           (response) => {
             Swal.fire('Eliminado', 'El alumno ha sido eliminado con éxito', 'success');
-            this.cargarAlumnos(); // Recargar la lista de alumnos después de eliminar
+            this.cargarAlumnos(); 
           },
           (error) => {
             Swal.fire('Error', 'Hubo un problema al eliminar el alumno', 'error');

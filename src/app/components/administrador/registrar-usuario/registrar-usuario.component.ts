@@ -42,7 +42,6 @@ export class CrearUsuarioComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Cargar la lista de roles
     this.usuarioService.obtenerRoles().subscribe(
       (data) => {
         this.roles = data;
@@ -52,7 +51,6 @@ export class CrearUsuarioComponent implements OnInit {
       }
     );
 
-    // Cargar la lista de profesores
     this.usuarioService.obtenerProfesores().subscribe(
       (data) => {
         this.profesores = data;
@@ -62,7 +60,6 @@ export class CrearUsuarioComponent implements OnInit {
       }
     );
 
-    // Cargar la lista de alumnos
     this.usuarioService.obtenerAlumnos().subscribe(
       (data) => {
         this.alumnos = data;
@@ -88,7 +85,7 @@ export class CrearUsuarioComponent implements OnInit {
             text: 'El usuario se ha registrado exitosamente',
             confirmButtonText: 'Aceptar'
           }).then(() => {
-            this.dialogRef.close(true); // Cerrar el modal y actualizar la lista de usuarios
+            this.dialogRef.close(true);
           });
         },
         (error) => {

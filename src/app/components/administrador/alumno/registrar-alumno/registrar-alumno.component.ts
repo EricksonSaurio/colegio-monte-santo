@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; // Necesario para el adaptador de fechas
+import { MatNativeDateModule } from '@angular/material/core'; 
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -34,8 +34,8 @@ export class RegistrarAlumnoComponent {
     cedula: '',
     telefono: '',
     correo: '',
-    fecha_nac: '', // Fecha de nacimiento
-    fecha_registro: '', // Fecha de registro
+    fecha_nac: '', 
+    fecha_registro: '', 
     estado: 1
   };
 
@@ -53,7 +53,7 @@ export class RegistrarAlumnoComponent {
           text: 'El alumno ha sido registrado exitosamente.',
           confirmButtonColor: '#3f51b5'
         }).then(() => {
-          this.dialogRef.close(true); // Cerramos el modal y actualizamos la lista
+          this.dialogRef.close(true); 
         });
       },
       (error) => {

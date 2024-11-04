@@ -29,7 +29,7 @@ export class EditarProfesorComponent {
     private profesorService: ProfesorService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.profesor = { ...data.profesor }; // Cargar datos del profesor a editar
+    this.profesor = { ...data.profesor };
   }
 
   onSubmit() {
@@ -41,7 +41,7 @@ export class EditarProfesorComponent {
           text: 'Los datos del profesor han sido actualizados exitosamente.',
           confirmButtonColor: '#3f51b5'
         }).then(() => {
-          this.dialogRef.close(true); // Cerramos el modal y actualizamos la lista
+          this.dialogRef.close(true);
         });
       },
       (error) => {

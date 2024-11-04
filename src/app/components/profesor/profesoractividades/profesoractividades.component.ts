@@ -9,6 +9,12 @@ import { EditarActividadComponent } from '../editar-actividad/editar-actividad.c
 import { ActividadService } from '../../../services/actividad.service';
 import Swal from 'sweetalert2';
 
+interface Actividad {
+  actividad_id: number;
+  nombre: string;
+  estado: string;
+}
+
 @Component({
   selector: 'app-profesor-actividades',
   templateUrl: './profesoractividades.component.html',
@@ -23,11 +29,11 @@ import Swal from 'sweetalert2';
   ]
 })
 export class ProfesorActividadesComponent implements OnInit {
-  actividades: any[] = [];
+  actividades: Actividad[] = [];
 
   constructor(
     public dialog: MatDialog,
-    private actividadService: ActividadService // Inyecta el servicio de actividad
+    private actividadService: ActividadService
   ) {}
 
   ngOnInit(): void {
@@ -38,8 +44,9 @@ export class ProfesorActividadesComponent implements OnInit {
     this.actividadService.getActividades().subscribe(
       (data) => {
         this.actividades = data.map((actividad: any) => ({
+          actividad_id: actividad.actividad_id,
           nombre: actividad.nombre_actividad,
-          estado: actividad.estado === 0 ? 'Inactivo' : 'Activo' // Asumiendo que 0 = Inactivo y 1 = Activo
+          estado: actividad.estado === 0 ? 'Inactivo' : 'Activo'
         }));
       },
       (error) => {
@@ -57,23 +64,23 @@ export class ProfesorActividadesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.actividades.push({
+          actividad_id: result.actividad_id,
           nombre: result.nombre_actividad,
           estado: result.estado === 1 ? 'Activo' : 'Inactivo'
         });
       }
     });
   }
-  
-  editActivity(actividad: any): void {
+
+  editActivity(actividad: Actividad): void {
     const dialogRef = this.dialog.open(EditarActividadComponent, {
       width: '400px',
       disableClose: true,
-      data: actividad // Asegúrate de pasar el objeto actividad completo
+      data: actividad
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Actualiza la actividad en la lista
         const index = this.actividades.findIndex(a => a.actividad_id === result.actividad_id);
         if (index !== -1) {
           this.actividades[index] = result;
@@ -81,7 +88,8 @@ export class ProfesorActividadesComponent implements OnInit {
       }
     });
   }
-  deleteActivity(actividad: any): void {
+
+  deleteActivity(actividad: Actividad): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Esta acción eliminará la actividad permanentemente.',
@@ -93,7 +101,6 @@ export class ProfesorActividadesComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Asegúrate de usar el identificador correcto
         this.actividadService.eliminarActividad(actividad.actividad_id).subscribe(
           () => {
             this.actividades = this.actividades.filter(a => a.actividad_id !== actividad.actividad_id);

@@ -12,7 +12,7 @@ import { EditarUsuarioComponent } from '../editar-usuario/editar-usuario.compone
   templateUrl: './listar-usuarios.component.html',
   styleUrls: ['./listar-usuarios.component.css'],
   standalone: true,
-  imports: [CommonModule, MatDialogModule] // Añadido MatDialogModule para el uso de diálogos
+  imports: [CommonModule, MatDialogModule]
 })
 export class ListarUsuariosComponent implements OnInit {
   usuarios: any[] = [];
@@ -46,7 +46,7 @@ export class ListarUsuariosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.cargarUsuarios(); // Recargar la lista de usuarios después de registrar uno nuevo
+        this.cargarUsuarios();
       }
     });
   }
@@ -59,7 +59,7 @@ export class ListarUsuariosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.cargarUsuarios(); // Recargar la lista después de editar
+        this.cargarUsuarios();
       }
     });
   }
@@ -79,7 +79,7 @@ export class ListarUsuariosComponent implements OnInit {
         this.usuarioService.eliminarUsuario(usuario.usuario_id).subscribe(
           (response) => {
             Swal.fire('Eliminado', 'El usuario ha sido eliminado con éxito', 'success');
-            this.cargarUsuarios(); // Recargar la lista después de eliminar
+            this.cargarUsuarios();
           },
           (error) => {
             Swal.fire('Error', 'Hubo un problema al eliminar el usuario', 'error');

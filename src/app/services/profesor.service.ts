@@ -20,7 +20,7 @@ export class ProfesorService {
   }
 
   registrarProfesor(profesor: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/Registrar`, profesor); // Asegúrate de que la ruta sea correcta
+    return this.http.post<any>(`${this.apiUrl}/Registrar`, profesor); 
   }
   editarProfesor(profesor: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/editar/${profesor.profesor_id}`, profesor);

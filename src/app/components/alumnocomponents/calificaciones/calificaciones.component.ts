@@ -1,18 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { CalificacionService } from '../../../services/calificacion.service';
 
 @Component({
   selector: 'app-calificaciones',
   templateUrl: './calificaciones.component.html',
-  styleUrls: ['./calificaciones.component.css']
+  styleUrls: ['./calificaciones.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatTableModule
+  ]
 })
 export class CalificacionesComponent implements OnInit {
-  calificaciones = [
-    { calificacion_id: 1, alumno_id: 202, materia_id: 101, periodo_id: 1 },
-    { calificacion_id: 2, alumno_id: 203, materia_id: 102, periodo_id: 2 },
-    { calificacion_id: 3, alumno_id: 204, materia_id: 103, periodo_id: 1 }
-  ];
+  calificaciones: any[] = [];
+  displayedColumns: string[] = ['calificacion_id', 'alumno_id', 'materia_id', 'periodo_id']; 
+
+  constructor(private calificacionService: CalificacionService) {}
 
   ngOnInit(): void {
-    // Aquí puedes cargar las calificaciones desde un servicio si es necesario.
+    this.cargarCalificaciones();
+  }
+
+  cargarCalificaciones(): void {
+    this.calificacionService.listarCalificaciones().subscribe(
+      (data: any) => {
+        console.log("Respuesta de la API:", data);
+        this.calificaciones = Array.isArray(data) ? data : data.data || [];
+      },
+      (error: any) => {
+        console.error('Error al cargar las calificaciones', error);
+      }
+    );
   }
 }

@@ -39,7 +39,6 @@ export class EditarMateriaComponent implements OnInit {
     private dialogRef: MatDialogRef<EditarMateriaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    // Asignar los datos de la materia recibidos
     if (data && data.materia) {
       this.materia = { ...data.materia };
     }
